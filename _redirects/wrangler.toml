@@ -1,1 +1,11 @@
+# wrangler.toml
+name = "lottery-proxy"
+main = "functions/api/proxy.js"
+compatibility_date = "2024-01-01"
 
+[vars]
+# API Key通过环境变量设置，不在代码中暴露
+# 在Cloudflare Dashboard中设置 API_KEY
+
+[env.production]
+vars = { API_KEY = "mk_your_actual_api_key_here" }
