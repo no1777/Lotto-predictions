@@ -1,12 +1,10 @@
 // js/api.js
 const API = {
-    // 不再需要API Key，由Workers处理
     baseURL: 'https://lottery-proxy.no1777.workers.dev',
     
     async request(endpoint, params = {}) {
         const url = new URL(`${this.baseURL}${endpoint}`);
         
-        // 添加查询参数
         Object.keys(params).forEach(key => {
             if (params[key] !== undefined && params[key] !== null) {
                 url.searchParams.append(key, params[key]);
@@ -35,10 +33,10 @@ const API = {
         }
     },
 
-    // 获取当前开奖
+    // ✅ 获取当前开奖 - 修正路径
     async getCurrentDraw() {
         try {
-            const data = await this.request('/v1/draw/current');
+            const data = await this.request('/draw/current');
             return data.data || data;
         } catch (error) {
             console.error('获取当前开奖失败:', error);
@@ -46,10 +44,10 @@ const API = {
         }
     },
 
-    // 获取历史开奖
+    // ✅ 获取历史开奖 - 修正路径
     async getHistory(limit = 50, offset = 0) {
         try {
-            const data = await this.request('/v1/draw/history', { limit, offset });
+            const data = await this.request('/draw/history', { limit, offset });
             return data.data || data;
         } catch (error) {
             console.error('获取历史数据失败:', error);
@@ -68,16 +66,15 @@ const API = {
             if (!data || data.length === 0) break;
             allData = allData.concat(data);
             offset += limit;
-            // 防止频率限制
             await new Promise(resolve => setTimeout(resolve, 200));
         }
         return allData;
     },
 
-    // 获取号码频率统计
+    // ✅ 获取号码频率统计 - 修正路径
     async getFrequency() {
         try {
-            const data = await this.request('/v1/stats/frequency');
+            const data = await this.request('/stats/frequency');
             return data.data || data;
         } catch (error) {
             console.error('获取频率数据失败:', error);
@@ -85,10 +82,10 @@ const API = {
         }
     },
 
-    // 获取开奖时间配置
+    // ✅ 获取开奖时间配置 - 修正路径
     async getDrawTime() {
         try {
-            const data = await this.request('/v1/config/draw-time');
+            const data = await this.request('/config/draw-time');
             return data.data || data;
         } catch (error) {
             console.error('获取开奖时间失败:', error);
