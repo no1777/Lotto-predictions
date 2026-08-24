@@ -1,9 +1,10 @@
 // js/api.js
 const API = {
     // 不再需要API Key，由Workers处理
+    baseURL: 'https://lottery-proxy.no1777.workers.dev',
+    
     async request(endpoint, params = {}) {
-        // 构建代理URL
-        const url = new URL(`/api/proxy${endpoint}`, window.location.origin);
+        const url = new URL(`${this.baseURL}${endpoint}`);
         
         // 添加查询参数
         Object.keys(params).forEach(key => {
