@@ -1,1 +1,330 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f0f4f8;
+    color: #2d3748;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 头部 */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.status-bar {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+/* 开奖窗 */
+.draw-window {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.draw-window h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #2d3748;
+}
+
+.draw-numbers {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.draw-numbers .label {
+    font-weight: 600;
+    font-size: 16px;
+    color: #4a5568;
+}
+
+.number-balls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ball {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.ball .number {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.ball .zodiac {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.ball.special {
+    background: #fc8181;
+    color: white;
+    border: 3px solid #e53e3e;
+    transform: scale(1.1);
+}
+
+/* 历史记录 */
+.history-toggle {
+    margin-top: 16px;
+}
+
+.history-toggle button {
+    background: #edf2f7;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4a5568;
+    transition: background 0.2s;
+}
+
+.history-toggle button:hover {
+    background: #e2e8f0;
+}
+
+.history-list {
+    margin-top: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f4f8;
+    font-size: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.history-item .period {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.history-item .special {
+    color: #e53e3e;
+    font-weight: 500;
+}
+
+.history-item .time {
+    color: #718096;
+    font-size: 12px;
+}
+
+/* 预测区域 */
+.prediction-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.prediction-section h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #2d3748;
+}
+
+.prediction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.prediction-card {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+}
+
+.prediction-card .card-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.prediction-card .period {
+    font-weight: 600;
+    font-size: 15px;
+    color: #2d3748;
+}
+
+.prediction-card .card-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.prediction-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: white;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px solid #e2e8f0;
+}
+
+.prediction-item .status-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.prediction-item.pending {
+    border-color: #a0aec0;
+    color: #4a5568;
+}
+
+.prediction-item.pending .status-badge {
+    background: #edf2f7;
+    color: #718096;
+}
+
+.prediction-item.win {
+    border-color: #48bb78;
+    color: #276749;
+    background: #f0fff4;
+}
+
+.prediction-item.win .status-badge {
+    background: #48bb78;
+    color: white;
+}
+
+.prediction-item.lose {
+    border-color: #fc8181;
+    color: #9b2c2c;
+    background: #fff5f5;
+}
+
+.prediction-item.lose .status-badge {
+    background: #fc8181;
+    color: white;
+}
+
+/* 占位符 */
+.placeholder {
+    color: #a0aec0;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 20px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    .status-bar {
+        font-size: 12px;
+        padding: 6px 12px;
+        flex-wrap: wrap;
+    }
+
+    .ball {
+        width: 48px;
+        height: 48px;
+    }
+
+    .ball .number {
+        font-size: 16px;
+    }
+
+    .ball .zodiac {
+        font-size: 10px;
+    }
+
+    .prediction-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .draw-numbers {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .ball {
+        width: 40px;
+        height: 40px;
+    }
+
+    .ball .number {
+        font-size: 14px;
+    }
+
+    .ball .zodiac {
+        font-size: 8px;
+    }
+
+    .prediction-item {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+}
