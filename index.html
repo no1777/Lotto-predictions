@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>六合彩特别号预测系统</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <h1>🎯 六合彩特别号预测系统</h1>
+            <div class="status-bar">
+                <span id="status">🟢 运行中</span>
+                <span id="countdown">⏰ 下次开奖: --:--:--</span>
+            </div>
+        </header>
 
+        <!-- 开奖窗 -->
+        <section class="draw-window">
+            <h2>📊 最新开奖</h2>
+            <div id="latestDraw" class="draw-content">
+                <div class="draw-numbers">
+                    <span class="label">第 <span id="period">--</span> 期</span>
+                    <div id="numbersDisplay" class="number-balls"></div>
+                </div>
+            </div>
+            <div id="historyToggle" class="history-toggle">
+                <button onclick="toggleHistory()">📜 开奖历史</button>
+            </div>
+            <div id="historyList" class="history-list" style="display:none;"></div>
+        </section>
+
+        <!-- 预测号码栏 -->
+        <section class="prediction-section">
+            <h2>🔢 12个预测号码 (最近6期)</h2>
+            <div id="numberPredictions" class="prediction-grid"></div>
+        </section>
+
+        <!-- 预测生肖栏 -->
+        <section class="prediction-section">
+            <h2>🐾 4个预测生肖 (最近6期)</h2>
+            <div id="zodiacPredictions" class="prediction-grid"></div>
+        </section>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/predictor.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
